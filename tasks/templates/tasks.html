@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+
+<main class ="container py-5">
+    <section class="card card-body">
+        <h1 class="display-1 text-center">Bienvenido <strong>{{user}}</strong></h1>
+        <hr>
+        <br>
+        <ul>
+            {% for task in tasks %}
+            <form action="{% url 'task_detail' task.id %}">
+                <li><strong>Title: </strong> {{task.title}}</li>
+                <strong>Content :</strong><br>{{task.description}}
+                <p><strong>by :</strong> {{task.user}}</p>
+                <button class="btn btn-info">
+                    Editar
+                </button>
+                <hr>
+            </form>
+            <br>
+            {% endfor %}
+            </ul>
+    </section>
+
+</main>
+
+        
+
+{% endblock %}
